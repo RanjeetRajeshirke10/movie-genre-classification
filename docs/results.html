@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Movie Genre Classification</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        nav { background: #333; padding: 10px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        .container { max-width: 800px; margin: auto; }
+        h1, h2 { color: #333; }
+        img { max-width: 100%; height: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dataset.html">Dataset</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="results.html">Results</a>
+        <a href="reproducibility.html">Reproducibility</a>
+        <a href="contributions.html">Contributions</a>
+        <a href="discussion.html">Discussion</a>
+    </nav>
+    <div class="container">
+        <h1>Results & Evaluation</h1>
+        <h2>Metrics</h2>
+        <p>Test F1 Macro: 0.5006 (Target: ~0.45–0.50)<br>
+           Test F1 Micro: 0.5551<br>
+           Test Accuracy: 0.2314 (Expected for multi-label)<br>
+           Hamming Score: [Insert, e.g., 0.85xx]</p>
+        <h2>Comparisons</h2>
+        <p>Text-only: F1 Macro 0.4958<br>
+           Image-only: F1 Macro 0.3567<br>
+           Fused: F1 Macro 0.5006 (outperforms both)</p>
+        <h2>Per-Genre F1 Scores</h2>
+        <table>
+            <tr><th>Genre</th><th>F1 Score</th></tr>
+            <tr><td>Animation</td><td>0.7169</td></tr>
+            <tr><td>Western</td><td>0.7080</td></tr>
+            <tr><td>Music</td><td>0.6895</td></tr>
+            <tr><td>Documentary</td><td>0.6773</td></tr>
+            <tr><td>Drama</td><td>0.6588</td></tr>
+            <tr><td>Horror</td><td>0.6458</td></tr>
+            <tr><td>Comedy</td><td>0.6086</td></tr>
+            <tr><td>Science Fiction</td><td>0.6004</td></tr>
+            <tr><td>Action</td><td>0.5191</td></tr>
+            <tr><td>Family</td><td>0.5151</td></tr>
+            <tr><td>Crime</td><td>0.4821</td></tr>
+            <tr><td>War</td><td>0.4811</td></tr>
+            <tr><td>Thriller</td><td>0.4671</td></tr>
+            <tr><td>Romance</td><td>0.3755</td></tr>
+            <tr><td>Adventure</td><td>0.3407</td></tr>
+            <tr><td>Fantasy</td><td>0.3353</td></tr>
+            <tr><td>Mystery</td><td>0.3326 (Target: >0.25)</td></tr>
+            <tr><td>History</td><td>0.2108 (Target: >0.20)</td></tr>
+            <tr><td>TV Movie</td><td>0.1464 (Target: >0.20)</td></tr>
+        </table>
+        <p><img src="f1_bar_plot.png" alt="F1 Bar Plot"></p>
+        <h2>Visualizations</h2>
+        <p><b>Training Loss</b><br><img src="loss_curves_fusion.png" alt="Loss Curve"></p>
+        <p><b>Validation F1 Macro</b><br><img src="f1_scores_fusion.png" alt="F1 Macro Curve"></p>
+        <p><b>Validation Accuracy</b><br><img src="accuracy_scores_fusion.png" alt="Accuracy Curve"></p>
+        <h2>Error Analysis</h2>
+        <p><b>History Confusion Matrix</b><br><img src="cm_history.png" alt="History Confusion Matrix"></p>
+        <p><b>TV Movie Confusion Matrix</b><br><img src="cm_tv_movie.png" alt="TV Movie Confusion Matrix"></p>
+        <p>TV Movie and History show lower F1 due to limited samples ([Insert counts, e.g., 350, 420]) and overlap with Drama/Family. Class weights (2.0) improved History from 0.1860 to 0.2108 and TV Movie from 0.1031 (subset) to 0.1464.</p>
+        <p><b>Threshold Tuning</b>: [Insert, e.g., Threshold 0.4: F1 Macro 0.49xx, Accuracy 0.24xx]</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Modal Movie Genre Classification</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        nav { background: #333; padding: 10px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        .container { max-width: 800px; margin: auto; }
+        h1, h2 { color: #333; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dataset.html">Dataset</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="results.html">Results</a>
+        <a href="reproducibility.html">Reproducibility</a>
+        <a href="contributions.html">Contributions</a>
+        <a href="discussion.html">Discussion</a>
+    </nav>
+    <div class="container">
+        <h1>Multi-Modal Movie Genre Classification</h1>
+        <h2>Introduction</h2>
+        <p>Genre classification enhances media analysis and recommendation systems by categorizing movies into genres like Drama, Comedy, or Horror. Using only plot synopses or posters can miss nuanced genre cues, so this project combines both for improved accuracy. Built in PyTorch, it explores data preprocessing, model design, and multi-modal fusion.</p>
+        <h2>Objectives</h2>
+        <ul>
+            <li>Achieve Test F1 Macro ~0.45–0.50 for multi-label genre classification.</li>
+            <li>Ensure Mystery F1 >0.25, TV Movie and History F1 >0.20.</li>
+            <li>Compare text-only (F1 Macro: 0.4958), image-only (F1 Macro: 0.3567), and fused models.</li>
+        </ul>
+        <p>Key Result: Test F1 Macro of 0.5006, exceeding target, with Mystery F1 of 0.3326.</p>
+    </div>
+</body>
+</html>

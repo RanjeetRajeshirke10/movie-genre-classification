@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology - Movie Genre Classification</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        nav { background: #333; padding: 10px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        .container { max-width: 800px; margin: auto; }
+        h1, h2 { color: #333; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dataset.html">Dataset</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="results.html">Results</a>
+        <a href="reproducibility.html">Reproducibility</a>
+        <a href="contributions.html">Contributions</a>
+        <a href="discussion.html">Discussion</a>
+    </nav>
+    <div class="container">
+        <h1>Methodology</h1>
+        <h2>Text Processing</h2>
+        <p>LSTM with attention processes tokenized synopses (padded to 100 tokens). GloVe embeddings capture semantic features. Sequence length tuned for balance.</p>
+        <h2>Image Processing</h2>
+        <p>ResNet18, fine-tuned on posters (224x224), with augmentations (rotations, flips) for robustness. Outputs 512 features.</p>
+        <h2>Fusion Technique</h2>
+        <p>Concatenates text (256 features) and image (512 features) embeddings, followed by fully connected layers with sigmoid for multi-label prediction.</p>
+        <h2>Hyperparameters</h2>
+        <p>Learning rate: 0.001, batch size: 16, optimizer: AdamW, epochs: 7 (early stopping, patience=3). Class weights (TV Movie: 2.0, History: 2.0) address rare genres.</p>
+    </div>
+</body>
+</html>

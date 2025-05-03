@@ -26,14 +26,14 @@
     <div class="container">
         <h1>Multi-Modal Movie Genre Classification</h1>
         <h2>Introduction</h2>
-        <p>Genre classification enhances media analysis and recommendation systems by categorizing movies into genres like Drama, Comedy, or Horror. Using only plot synopses or posters can miss nuanced genre cues, so this project combines both for improved accuracy. Built in PyTorch, it explores data preprocessing, model design, and multi-modal fusion.</p>
+        <p>Accurately classifying movies into these genres is essential for enhancing media platforms, powering recommendation systems, and improving audience engagement. For example, Netflix genres films to suggest to audiences it thinks will like the films, just like studios attempt to match marketing campaign targeting based on films' genre tendencies. But it's not as easy to assign genres—many films are multiple (such as Action and Adventure), some are more challenging to detect (TV Movie, History as a genre) and more nuanced. In addition, the process is gendered and subverted based on text or visual assignment—the films in question can have no synopses but be compelling (synopses make more finite visual possibilities), and posters may not include the entire story/genre assignment as story is time based.</p>
+        <p>This project answers the challenge by creating a **multi-modal machine learning model** that classifies 84,094 movies across 19 genres—such as Mystery, TV Movie, and History—by using plot synopses (text) and movie posters (images), including those notoriously challenging. Using PyTorch, the architecture of the classification model will consist of an LSTM network with attention for text parsing and ResNet18 for image parsing, leading to a concatenation fusion layer to merge the two results. Since it decodes different yet complementary styles—the meaning behind the words and the representational image of the movies—the intent is to surpass uni-modal models in accuracy. The project entails researching data formatting and cleansing for each mode, the architecture of the model, and classifications for multi-label outputs. The greatest obstacles include genre discrepancies and overlaps.</p>
         <h2>Objectives</h2>
         <ul>
-            <li>Achieve Test F1 Macro ~0.45–0.50 for multi-label genre classification.</li>
-            <li>Ensure Mystery F1 >0.25, TV Movie and History F1 >0.20.</li>
-            <li>Compare text-only (F1 Macro: 0.4958), image-only (F1 Macro: 0.3567), and fused models.</li>
+            <li><b>Robust Performance</b>: Target a Test F1 Macro score of ~0.45–0.50 for multi-label genre classification across 19 genres, balancing precision and recall for both common and rare genres.</li>
+            <li><b>Solve rare Genres</b>: Ensure Mystery F1 score >0.25 and TV Movie and History F1 scores >0.20, addressing their scarcity and overlap with other genres.</li>
+            <li><b>Compare Modalities</b>: Evaluate text-only (F1 Macro: 0.4958), image-only (F1 Macro: 0.3567), and fused models to quantify the benefits of multi-modal learning.</li>  
         </ul>
-        <p>Key Result: Test F1 Macro of 0.5006, exceeding target, with Mystery F1 of 0.3326.</p>
     </div>
 </body>
 </html>

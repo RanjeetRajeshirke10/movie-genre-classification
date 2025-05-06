@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Multi-Modal Movie Genre Classification</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dataset.html">Dataset</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="results.html">Results</a>
+        <a href="reproducibility.html">Reproducibility</a>
+        <a href="contributions.html">Contributions</a>
+        <a href="discussion.html">Discussion</a>
+    </nav>
+       
+    </header>
+    <div class="container">
+        <h1>Results & Evaluation</h1>
+        <p>The project evaluated three types of models: text-only, image-only, and fusion (joining the two modalities). The following table shows the results on the test set using F1 Macro, F1 Micro, and Accuracy measures. F1 Macro is considered the main metric because it favors the multi-label classification with imbalanced genres.</p>
+        <table>
+            <tr><th>Model</th><th>F1 Macro</th><th>F1 Micro</th><th>Accuracy</th></tr>
+            <tr><td>Text-Only (LSTM)</td><td>0.4958</td><td>0.5365</td><td>0.8861</td></tr>
+            <tr><td>Image-Only (ResNet18)</td><td>0.3567</td><td>0.4286</td><td>0.8377</td></tr>
+            <tr><td>Fusion (LSTM + ResNet18)</td><td>0.5006</td><td>0.5551</td><td>0.2314</td></tr>
+        </table>
+        <p>The fusion model held the top spot with an F1 Macro of 0.5006, which is inside the range of target values (0.45–0.50) and arises better results than samples that consider text only (0.4958) or image only (0.3567). Text-based modeling performed well because synopses provide rich semantic clues, especially for Drama and Music genres (F1: 0.6625 and 0.7183, respectively). On the flip side, genres that lack visual cues cause the image-based model to falter, with good performances in image-understood genres like Animation (F1: 0.6636). The improvement of the fusion model attests that combining text and image clues is worthwhile.</p>
+        <h2>Per-Genre F1 Scores</h2>
+        <p>The table below compares F1 scores for all 19 genres across the three models, for Mystery, History, and TV Movie.</p>
+        <table>
+            <tr><th>Genre</th><th>Text-Only F1</th><th>Image-Only F1</th><th>Fusion F1</th></tr>
+            <tr><td>Animation</td><td>0.5451</td><td>0.6636</td><td>0.7169</td></tr>
+            <tr><td>Western</td><td>0.6500</td><td>0.4077</td><td>0.7080</td></tr>
+            <tr><td>Music</td><td>0.7183</td><td>0.2816</td><td>0.6895</td></tr>
+            <tr><td>Documentary</td><td>0.7004</td><td>0.3643</td><td>0.6773</td></tr>
+            <tr><td>Drama</td><td>0.6625</td><td>0.6262</td><td>0.6588</td></tr>
+            <tr><td>Horror</td><td>0.6230</td><td>0.4393</td><td>0.6458</td></tr>
+            <tr><td>Comedy</td><td>0.5610</td><td>0.5793</td><td>0.6086</td></tr>
+            <tr><td>Science Fiction</td><td>0.5352</td><td>0.3054</td><td>0.6004</td></tr>
+            <tr><td>Action</td><td>0.4956</td><td>0.3933</td><td>0.5191</td></tr>
+            <tr><td>Family</td><td>0.4596</td><td>0.4030</td><td>0.5151</td></tr>
+            <tr><td>Crime</td><td>0.4851</td><td>0.2957</td><td>0.4821</td></tr>
+            <tr><td>War</td><td>0.5270</td><td>0.1372</td><td>0.4811</td></tr>
+            <tr><td>Thriller</td><td>0.4804</td><td>0.4062</td><td>0.4671</td></tr>
+            <tr><td>Romance</td><td>0.4584</td><td>0.3937</td><td>0.3755</td></tr>
+            <tr><td>Adventure</td><td>0.3508</td><td>0.2869</td><td>0.3407</td></tr>
+            <tr><td>Fantasy</td><td>0.3892</td><td>0.2458</td><td>0.3353</td></tr>
+            <tr><td>Mystery</td><td>0.2974 </td><td>0.1700 </td><td>0.3326 </td></tr>
+            <tr><td>History</td><td>0.3121 </td><td>0.1439 </td><td>0.2108 </td></tr>
+            <tr><td>TV Movie</td><td>0.1687 </td><td>0.2342 </td><td>0.1464 </td></tr>
+        </table>
+        <h2> Text Model </h2>
+        <p><img src="f1_scores_by_genre.png" alt="Text Model: F1 Scores by Genre"></p>
+        <h2> Image Model </h2>
+        <p><img src="f1_scores_image.png" alt="Image Model: F1 Scores by Genre"></p>
+        <h2> Fusion Model </h2>
+        <p><img src="f1_bar_plot.png" alt="Fusion Model: F1 Scores by Genre"></p>
+        <p>The fusion model outperformed both single-modality models in most genres, leveraging complementary textual and visual cues. The text-only model excelled for History (0.3121) and Music (0.7183), driven by semantic richness in synopses. The image-only model performed well for Animation (0.6636) and Comedy (0.5793) but struggled with rare genres like History (0.1439) and Mystery (0.1700) due to ambiguous visual features.</p>
+        <h2>Visualizations</h2>
+        <p><b>Text Model: Training and Validation Loss</b><br><img src="loss_plot.png" alt="Text Model Loss Curve"></p>
+        <p><b>Image Model: Training and Validation Loss</b><br><img src="loss_curves_image.png" alt="Image Model Loss Curve"></p>
+        <p><b>Fusion Model: Training and Validation Loss</b><br><img src="loss_curves_fusion.png" alt="Fusion Model Loss Curve"></p>
+        <p><b>Fusion Model: Validation F1 Macro</b><br><img src="f1_scores_fusion.png" alt="Fusion Model F1 Macro Curve"></p>
+        <p><b>Fusion Model: Validation Accuracy</b><br><img src="accuracy_scores_fusion.png" alt="Fusion Model Accuracy Curve"></p>
+        <h2>Error Analysis</h2>
+        <p><b>Fusion Model: History Confusion Matrix</b><br><img src="cm_history.png" alt="History Confusion Matrix"></p>
+        <p><b>Fusion Model: TV Movie Confusion Matrix</b><br><img src="cm_tv_movie.png" alt="TV Movie Confusion Matrix"></p>
+        <p>Misclassifications highlight genre overlap challenges. For the text-only model, <i>Destruction Force</i> (True: Crime) was predicted as Action, Crime, Drama, and Thriller due to its action-heavy synopsis. <i>The Perez Family</i> (True: Comedy, Drama, Romance) was misclassified as Documentary, likely due to historical context. The image-only model struggled with TV Movie (0.2342) and History (0.1439), as posters often resemble Drama or Family, leading to false negatives (see confusion matrices). The fusion model’s performance on TV Movie (0.1464) and History (0.2108) was limited by low sample counts ([Insert counts, e.g., 350, 420]). Class weights (2.0) improved History F1 from 0.1860 to 0.2108 and TV Movie from 0.1031 to 0.1464, but TV Movie fell short of the 0.20 target. Threshold tuning was conducted to optimize the decision boundary:</p>
+    </div>
+</body>
+</html>

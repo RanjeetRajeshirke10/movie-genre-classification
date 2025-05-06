@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Multi-Modal Movie Genre Classification</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dataset.html">Dataset</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="results.html">Results</a>
+        <a href="reproducibility.html">Reproducibility</a>
+        <a href="contributions.html">Contributions</a>
+        <a href="discussion.html">Discussion</a>
+    </nav>
+    <div class="container">
+        <h1>Multi-Modal Movie Genre Classification</h1>
+        <h2>Introduction</h2>
+        <p>Accurately classifying movies into these genres is essential for enhancing media platforms, powering recommendation systems, and improving audience engagement. For example, Netflix genres films to suggest to audiences it thinks will like the films, just like studios attempt to match marketing campaign targeting based on films' genre tendencies. But it's not as easy to assign genres—many films are multiple (such as Action and Adventure), some are more challenging to detect (TV Movie, History as a genre) and more nuanced. In addition, the process is gendered and subverted based on text or visual assignment—the films in question can have no synopses but be compelling (synopses make more finite visual possibilities), and posters may not include the entire story/genre assignment as story is time based.</p>
+        <p>This project answers the challenge by creating a **multi-modal machine learning model** that classifies 84,094 movies across 19 genres—such as Mystery, TV Movie, and History—by using plot synopses (text) and movie posters (images), including those notoriously challenging. Using PyTorch, the architecture of the classification model will consist of an LSTM network with attention for text parsing and ResNet18 for image parsing, leading to a concatenation fusion layer to merge the two results. Since it decodes different yet complementary styles—the meaning behind the words and the representational image of the movies—the intent is to surpass uni-modal models in accuracy. The project entails researching data formatting and cleansing for each mode, the architecture of the model, and classifications for multi-label outputs. The greatest obstacles include genre discrepancies and overlaps.</p>
+        <h2>Objectives</h2>
+        <ul>
+            <li><b>Robust Performance</b>: Target a Test F1 Macro score of ~0.45–0.50 for multi-label genre classification across 19 genres, balancing precision and recall for both common and rare genres.</li>
+            <li><b>Solve rare Genres</b>: Ensure Mystery F1 score and TV Movie and History F1 scores, addressing their scarcity and overlap with other genres.</li>
+            <li><b>Compare Modalities</b>: Evaluate text-only, image-only, and fused models to quantify the benefits of multi-modal learning.</li>  
+        </ul>
+    </div>
+</body>
+</html>

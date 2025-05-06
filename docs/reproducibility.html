@@ -28,20 +28,31 @@
         <p>GitHub: <a href="https://github.com/RanjeetRajeshirke10/movie-genre-classification">movie-genre-classification</a><br>
            Main script: <a href="../FusionModel.ipynb">FusionModel.ipynb</a></p>
         <h2>Setup Guide</h2>
-        <p>1. Create Conda environment:<br>
-           <code>conda create --name ai-env python=3.9</code><br>
-           <code>conda activate ai-env</code></p>
+        <p>1. Create environment:<br>
+           <p>Create a virtual environment first, use the command "python -m venv name_of_env" and then activate the environment with the command "name_of_env\Scripts\activate"</p><br>
+           
         <p>2. Install dependencies:<br>
-           <code>conda install pytorch torchvision torchaudio cpuonly -c pytorch</code><br>
-           <code>pip install pandas numpy scikit-learn matplotlib seaborn</code></p>
+           <p>pip install torch==1.12.0 torchvision==0.13.0 pandas numpy scikit-learn matplotlib seaborn</p><br>
+           
         <h2>Data Access</h2>
         <p>The dataset is sourced from TMDb via Kaggle and preprocessed into <code>train_fixed_updated.json</code>. Follow these steps to obtain and prepare the data:</p>
         <ol>
             <b>Download Dataset</b>: Access the dataset from Kaggle (e.g., TMDb 5000 Movie Dataset or similar) at <a href="https://www.kaggle.com/datasets">kaggle.com/datasets</a>. Alternatively, download the preprocessed <code>train_fixed_updated.json</code> from the project repository: <a href="https://github.com/username/movie-genre-classification">github.com/username/movie-genre-classification</a>.
         </ol>
-        <h2>Run Commands</h2>
-        <p>Clone repo: <code>git clone https://github.com/RanjeetRajeshirke10/movie-genre-classification.git</code><br>
-           Run: <code>python fusion_model_cpu.py > fusion_final_run.log 2>&1</code></p>
+        <h2>Code Access</h2>
+        <p>All source code is available in the project repository: <a href="https://github.com/username/movie-genre-classification">github.com/username/movie-genre-classification</a>. Key files include:</p>
+        <ul>
+            <li><code>fusion_model_cpu.py</code>: Implements the fusion model (LSTM + ResNet18).</li>
+            <li><code>text_model.py</code>: Implements the text-only model (LSTM with attention).</li>
+            <li><code>image_model.py</code>: Implements the image-only model (ResNet18).</li>
+            <li><code>preprocess_data.py</code>: Preprocesses the dataset (tokenization, image resizing, oversampling).</li>
+            <li><code>evaluate.py</code>: Evaluates models and generates metrics (F1 Macro, per-genre F1).</li>
+            <li><code>visualize.py</code>: Generates plots (e.g., <code>loss_plot.png</code>, <code>f1_scores_image.png</code>).</li>
+        </ul>
+        <p>Clone the repository:
+            <pre><code>git clone https://github.com/username/movie-genre-classification.git
+cd movie-genre-classification</code></pre>
+        </p>
     </div>
 </body>
 </html>

@@ -38,7 +38,7 @@
         </table>
         <p>The fusion model achieved the highest F1 Macro (0.5006), meeting the target range of 0.45–0.50 and outperforming the text-only (0.4958) and image-only (0.3567) models. The text-only model excelled due to rich semantic cues in synopses, particularly for genres like Drama (F1: 0.6625) and Music (F1: 0.7183). The image-only model struggled with genres lacking distinct visual markers (e.g., TV Movie: 0.2342, History: 0.1439), but performed well for visually distinct genres like Animation (F1: 0.6636). The fusion model’s improvement demonstrates the value of combining textual and visual signals.</p>
         <h2>Per-Genre F1 Scores</h2>
-        <p>The table below compares F1 scores for all 19 genres across the text-only, image-only, and fusion models, with targets for Mystery (>0.25), History (>0.20), and TV Movie (>0.20).</p>
+        <p>The table below compares F1 scores for all 19 genres across the three models, with targets for Mystery (>0.25), History (>0.20), and TV Movie (>0.20).</p>
         <table>
             <tr><th>Genre</th><th>Text-Only F1</th><th>Image-Only F1</th><th>Fusion F1</th></tr>
             <tr><td>Animation</td><td>0.5451</td><td>0.6636</td><td>0.7169</td></tr>
@@ -61,23 +61,23 @@
             <tr><td>History</td><td>0.3121 (Target: >0.20)</td><td>0.1439 (Target: >0.20)</td><td>0.2108 (Target: >0.20)</td></tr>
             <tr><td>TV Movie</td><td>0.1687 (Target: >0.20)</td><td>0.2342 (Target: >0.20)</td><td>0.1464 (Target: >0.20)</td></tr>
         </table>
-        <p><img src="f1_bar_plot.png" alt="Per-Genre F1 Scores (Fusion Model)"></p>
-        <p><img src="f1_bar_plot_image.png" alt="Per-Genre F1 Scores (Image Model)"></p>
-        <p>The fusion model outperformed both single-modality models in most genres (e.g., Animation: 0.7169, Western: 0.7080), leveraging complementary textual and visual cues. The text-only model excelled for History (0.3121) and Music (0.7183), where synopses provide strong semantic signals. The image-only model performed well for Animation (0.6636) and Comedy (0.5793) due to distinct visual styles, but struggled with History (0.1439) and Mystery (0.1700) due to ambiguous poster designs. TV Movie remained challenging across all models (text: 0.1687, image: 0.2342, fusion: 0.1464), reflecting limited samples and overlap with Drama/Family.</p>
+        <p><img src="f1_scores_by_genre.png" alt="Text Model: F1 Scores by Genre"></p>
+        <p><img src="f1_scores_image.png" alt="Image Model: F1 Scores by Genre"></p>
+        <p><img src="f1_bar_plot.png" alt="Fusion Model: F1 Scores by Genre"></p>
+        <p>The fusion model outperformed both single-modality models in most genres (e.g., Animation: 0.7169, Western: 0.7080), leveraging complementary textual and visual cues. The text-only model excelled for History (0.3121) and Music (0.7183), driven by semantic richness in synopses. The image-only model performed well for Animation (0.6636) and Comedy (0.5793) but struggled with rare genres like History (0.1439) and Mystery (0.1700) due to ambiguous visual features.</p>
         <h2>Visualizations</h2>
-        <p><b>Text Model: Training and Validation Loss</b><br><img src="loss_curves_text.png" alt="Text Model Loss Curve"></p>
-        <p><b>Text Model: Validation F1 Macro</b><br><img src="f1_scores_text.png" alt="Text Model F1 Macro Curve"></p>
-        <p><b>Fusion Model: Training Loss</b><br><img src="loss_curves_fusion.png" alt="Fusion Model Loss Curve"></p>
+        <p><b>Text Model: Training and Validation Loss</b><br><img src="loss_plot.png" alt="Text Model Loss Curve"></p>
+        <p><b>Image Model: Training and Validation Loss</b><br><img src="loss_curves_image.png" alt="Image Model Loss Curve"></p>
+        <p><b>Fusion Model: Training and Validation Loss</b><br><img src="loss_curves_fusion.png" alt="Fusion Model Loss Curve"></p>
         <p><b>Fusion Model: Validation F1 Macro</b><br><img src="f1_scores_fusion.png" alt="Fusion Model F1 Macro Curve"></p>
         <p><b>Fusion Model: Validation Accuracy</b><br><img src="accuracy_scores_fusion.png" alt="Fusion Model Accuracy Curve"></p>
-        <p><b>Note</b>: Image model training loss and F1 Macro curves are unavailable due to missing training logs. The image model’s per-genre F1 scores are visualized in the bar plot above.</p>
         <h2>Error Analysis</h2>
         <p><b>Fusion Model: History Confusion Matrix</b><br><img src="cm_history.png" alt="History Confusion Matrix"></p>
         <p><b>Fusion Model: TV Movie Confusion Matrix</b><br><img src="cm_tv_movie.png" alt="TV Movie Confusion Matrix"></p>
-        <p>The text-only model’s misclassifications highlight genre overlap. For example, <i>Destruction Force</i> (True: Crime) was predicted as Action, Crime, Drama, and Thriller due to its action-heavy synopsis. <i>The Perez Family</i> (True: Comedy, Drama, Romance) was misclassified as Documentary, likely due to historical context. The image-only model struggled with History (F1: 0.1439) and Mystery (F1: 0.1700), as posters often lack distinct genre markers. The fusion model’s performance on TV Movie (0.1464) and History (0.2108) was limited by low sample counts ([Insert counts, e.g., 350, 420]) and feature overlap with Drama and Family. Class weights (2.0) improved History F1 from 0.1860 to 0.2108 and TV Movie from 0.1031 to 0.1464 in the fusion model, but TV Movie fell short of the 0.20 target. Threshold tuning was conducted to optimize the decision boundary:</p>
+        <p>Misclassifications highlight genre overlap challenges. For the text-only model, <i>Destruction Force</i> (True: Crime) was predicted as Action, Crime, Drama, and Thriller due to its action-heavy synopsis. <i>The Perez Family</i> (True: Comedy, Drama, Romance) was misclassified as Documentary, likely due to historical context. The image-only model struggled with TV Movie (0.2342) and History (0.1439), as posters often resemble Drama or Family, leading to false negatives (see confusion matrices). The fusion model’s performance on TV Movie (0.1464) and History (0.2108) was limited by low sample counts ([Insert counts, e.g., 350, 420]). Class weights (2.0) improved History F1 from 0.1860 to 0.2108 and TV Movie from 0.1031 to 0.1464, but TV Movie fell short of the 0.20 target. Threshold tuning was conducted to optimize the decision boundary:</p>
         <p><b>Threshold Tuning (Fusion Model)</b>: [Insert, e.g., Threshold 0.4: F1 Macro 0.4923, Accuracy 0.2456]</p>
         <p><b>Hamming Score (Fusion Model)</b>: [Insert, e.g., 0.8532]</p>
-        <p>Raw probabilities from the text model (e.g., first movie: Action 0.8185, Crime 0.8619) show high confidence in dominant genres but low scores for TV Movie (0.0112). The image model’s higher TV Movie F1 (0.2342) suggests some visual cues (e.g., made-for-TV aesthetics) were captured, but not consistently. Oversampling (74,000 samples) helped the text model, but advanced techniques like attention-based fusion or more data are needed for rare genres.</p>
+        <p>Raw probabilities from the text model (e.g., first movie: Action 0.8185, Crime 0.8619) show high confidence in dominant genres but low scores for TV Movie (0.0112). Oversampling (74,000 samples) improved text model performance but was insufficient for rare genres, suggesting the need for advanced techniques like attention-based fusion or additional data.</p>
     </div>
 </body>
 </html>

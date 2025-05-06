@@ -75,9 +75,6 @@
         <p><b>Fusion Model: History Confusion Matrix</b><br><img src="cm_history.png" alt="History Confusion Matrix"></p>
         <p><b>Fusion Model: TV Movie Confusion Matrix</b><br><img src="cm_tv_movie.png" alt="TV Movie Confusion Matrix"></p>
         <p>Misclassifications highlight genre overlap challenges. For the text-only model, <i>Destruction Force</i> (True: Crime) was predicted as Action, Crime, Drama, and Thriller due to its action-heavy synopsis. <i>The Perez Family</i> (True: Comedy, Drama, Romance) was misclassified as Documentary, likely due to historical context. The image-only model struggled with TV Movie (0.2342) and History (0.1439), as posters often resemble Drama or Family, leading to false negatives (see confusion matrices). The fusion model’s performance on TV Movie (0.1464) and History (0.2108) was limited by low sample counts ([Insert counts, e.g., 350, 420]). Class weights (2.0) improved History F1 from 0.1860 to 0.2108 and TV Movie from 0.1031 to 0.1464, but TV Movie fell short of the 0.20 target. Threshold tuning was conducted to optimize the decision boundary:</p>
-        <p><b>Threshold Tuning (Fusion Model)</b>: [Insert, e.g., Threshold 0.4: F1 Macro 0.4923, Accuracy 0.2456]</p>
-        <p><b>Hamming Score (Fusion Model)</b>: [Insert, e.g., 0.8532]</p>
-        <p>Raw probabilities from the text model (e.g., first movie: Action 0.8185, Crime 0.8619) show high confidence in dominant genres but low scores for TV Movie (0.0112). Oversampling (74,000 samples) improved text model performance but was insufficient for rare genres, suggesting the need for advanced techniques like attention-based fusion or additional data.</p>
     </div>
 </body>
 </html>
